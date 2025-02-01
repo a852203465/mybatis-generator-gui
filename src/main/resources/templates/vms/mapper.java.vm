@@ -1,0 +1,46 @@
+package ${package.Mapper};
+
+import ${package.Entity}.${entity};
+import ${superMapperClassPackage};
+#if(${mapperAnnotation})
+import org.apache.ibatis.annotations.Mapper;
+#end
+#if(${superServiceImplClass})
+import ${package.Query}.${entity}Query;
+#end
+
+import java.util.List;
+
+/**
+ * <p>
+ * $!{table.comment} Mapper 接口
+ * </p>
+ *
+ * @author ${author}
+ * @since ${date}
+ */
+#if(${mapperAnnotation})
+@Mapper
+#end
+#if(${kotlin})
+interface ${table.mapperName} : ${superMapperClass}<${entity}>
+#else
+public interface ${table.mapperName} extends ${superMapperClass}<${entity}> {
+
+    /**
+     * 查询${table.comment}
+     * @param query 查询参数
+     * @return {@link List }<{@link ${entity} }>
+     */
+    #if(${superServiceImplClass} == 'BaseServiceImpl')
+    List<${entity}> find${entity}(${entity}Query query);
+    #end
+
+
+
+
+
+
+
+}
+#end

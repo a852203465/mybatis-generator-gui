@@ -1,0 +1,48 @@
+package ${package.Dto};
+
+import lombok.Data;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import java.io.Serializable;
+import java.util.Random;
+
+/**
+ * <p>
+ * ${table.comment}DTO
+ * </p>
+ *
+ * @author ${author}
+ * @since ${date}
+ */
+@Data
+@ApiModel("${table.comment}参数")
+public class ${entity}DTO implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+    #foreach(${field} in ${table.fields})
+
+    /**
+     * ${field.comment}
+     */
+    @ApiModelProperty("${field.comment}")
+    private #if(${field.propertyType}=='Blob')byte[]#else${field.propertyType}#end ${field.propertyName};
+    #end
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

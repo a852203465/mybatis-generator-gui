@@ -1,0 +1,94 @@
+server:
+  port: 18888
+
+logging:
+  config: classpath:logback.xml
+
+spring:
+  application:
+    name: mybatis-generators-gui
+
+  profiles:
+    active: dev
+
+  sql:
+    init:
+      encoding: UTF-8
+      mode: always
+      schema-locations:
+        - classpath:sqls/main.sql
+
+  thymeleaf:
+    cache: false
+    enabled: true
+    encoding: UTF-8
+    mode: HTML
+    suffix: .html
+    prefix: classpath:/templates/
+
+mybatis-plus:
+  global-config:
+    db-config:
+      id-type: assign_id
+  configuration:
+    map-underscore-to-camel-case: true
+  type-aliases-package: cn.darkjrong.mybatis.generators.pojo.entity
+  mapper-locations: classpath*:/mappers/**/*.xml
+
+pagehelper:
+  helperDialect: sqlite
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

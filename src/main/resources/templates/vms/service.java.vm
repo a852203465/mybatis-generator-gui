@@ -1,0 +1,57 @@
+package ${package.Service};
+
+import ${package.Entity}.${entity};
+import ${superServiceClassPackage};
+
+#if(${superServiceClass} == 'BaseService')
+import ${package.Vo}.${entity}VO;
+import ${package.Dto}.${entity}DTO;
+import com.xdcplus.mp.service.BaseService;
+#end
+
+/**
+ * <p>
+ * $!{table.comment} 服务类
+ * </p>
+ *
+ * @author ${author}
+ * @since ${date}
+ */
+#if(${kotlin})
+interface ${table.serviceName} : ${superServiceClass}<${entity}>
+#else
+
+#if(${superServiceClass} == 'BaseService')
+public interface ${table.serviceName} extends ${superServiceClass}<${entity}, ${entity}, ${entity}VO> {
+#else
+public interface ${table.serviceName} extends ${superServiceClass}<${entity}> {
+#end
+
+    #if(${superServiceClass} == 'BaseService')
+    /**
+     * 保存${table.comment}
+     * @param ${entity.substring(0,1).toLowerCase()}${entity.substring(1)}DTO 新增${table.comment}参数
+     */
+    void save${entity}(${entity}DTO ${entity.substring(0,1).toLowerCase()}${entity.substring(1)}DTO);
+
+    /**
+     * update${table.comment}
+     * @param ${entity.substring(0,1).toLowerCase()}${entity.substring(1)}DTO 修改${table.comment}参数
+     */
+    void update${entity}(${entity}DTO ${entity.substring(0,1).toLowerCase()}${entity.substring(1)}DTO);
+
+    #end
+
+
+
+
+
+
+
+
+
+
+
+}
+#end
+

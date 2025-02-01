@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="523.0" prefWidth="817.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cn.darkjrong.mybatis.generator.controller.GeneratorConfigController">
+   <children>
+      <TableView fx:id="configTable" layoutX="47.0" layoutY="53.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <columns>
+          <TableColumn fx:id="nameColumn" prefWidth="75.0" style="-fx-alignment: center;" text="配置名称" />
+            <TableColumn fx:id="projectFolderColumn" prefWidth="75.0" style="-fx-alignment: center;" text="项目目录" />
+            <TableColumn fx:id="authorColumn" prefWidth="75.0" style="-fx-alignment: center;" text="作者" />
+            <TableColumn fx:id="parentFolderColumn" prefWidth="75.0" style="-fx-alignment: center;" text="父级目录" />
+            <TableColumn fx:id="entityPackageColumn" prefWidth="75.0" style="-fx-alignment: center;" text="实体类包名" />
+            <TableColumn fx:id="mapperPackageColumn" prefWidth="75.0" style="-fx-alignment: center;" text="Mapper包名" />
+            <TableColumn fx:id="xmlMapperPackageColumn" prefWidth="75.0" style="-fx-alignment: center;" text="XML包名" />
+          <TableColumn fx:id="tableActionsColumn" editable="false" prefWidth="75.0" sortable="false" style="-fx-alignment: center;" text="操作" />
+        </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </TableView>
+   </children>
+</AnchorPane>

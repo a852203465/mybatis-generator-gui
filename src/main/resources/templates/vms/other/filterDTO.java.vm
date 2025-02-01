@@ -1,0 +1,43 @@
+package ${package.Dto};
+
+import com.xdcplus.pager.dto.PageDTO;
+
+import lombok.EqualsAndHashCode;
+import lombok.Data;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
+import java.io.Serializable;
+
+/**
+ * <p>
+ * ${table.comment}查询DTO
+ * </p>
+ *
+ * @author ${author}
+ * @since ${date}
+ */
+@EqualsAndHashCode(callSuper = true)
+@Data
+@ApiModel("${table.comment}查询参数")
+public class ${entity}FilterDTO extends PageDTO implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
+#foreach(${field} in ${table.fields})
+    #if(${field.propertyName} != 'id'
+    && ${field.propertyName} != 'createdUser'
+    && ${field.propertyName} != 'createdTime'
+    && ${field.propertyName} != 'updatedUser'
+    && ${field.propertyName} != 'updatedTime'
+    && ${field.propertyName} != 'description')
+
+    /**
+     * ${field.comment}
+     */
+    @ApiModelProperty("${field.comment}")
+    private #if(${field.propertyType}=='Blob')byte[]#else${field.propertyType}#end ${field.propertyName};
+    #end
+#end
+
+}

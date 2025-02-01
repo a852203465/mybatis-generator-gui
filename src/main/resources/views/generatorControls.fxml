@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cn.darkjrong.mybatis.generator.controller.GeneratorControlsController">
+   <children>
+      <HBox layoutX="46.0" layoutY="28.0" prefHeight="263.0" prefWidth="740.0">
+         <children>
+            <Label text="已选列表">
+               <HBox.margin>
+                  <Insets top="5.0" />
+               </HBox.margin>
+            </Label>
+            <TableView fx:id="selectedTableListView" editable="true" prefHeight="263.0" prefWidth="680.0">
+               <columns>
+                  <TableColumn fx:id="tableNameColumn" prefWidth="132.0" style="-fx-alignment: center;" text="表名" />
+                  <TableColumn fx:id="tablePrefixNameColumn" prefWidth="113.6666259765625" style="-fx-alignment: center;" text="移除表前缀" />
+                  <TableColumn fx:id="tableClassNameColumn" prefWidth="96.3333740234375" style="-fx-alignment: center;" text="类名" />
+                  <TableColumn fx:id="tableKeyColumn" maxWidth="3000.0" prefWidth="121.0" style="-fx-alignment: center;" text="主键" />
+                  <TableColumn fx:id="tableActionsColumn" prefWidth="104.0" style="-fx-alignment: center;" text="操作" />
+               </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
+            </TableView>
+         </children>
+      </HBox>
+      <HBox layoutX="46.0" layoutY="298.0" prefHeight="34.0" prefWidth="740.0">
+         <children>
+            <Label text="项目目录">
+               <HBox.margin>
+                  <Insets top="5.0" />
+               </HBox.margin>
+            </Label>
+            <TextField fx:id="projectFolderField" prefHeight="30.0" prefWidth="423.0">
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
+            </TextField>
+            <Button fx:id="chooseProjectFolder" mnemonicParsing="false" onAction="#chooseProjectFolder" prefHeight="30.0" prefWidth="76.0" text="选择">
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
+            </Button>
+            <Label text="作者">
+               <HBox.margin>
+                  <Insets left="10.0" top="5.0" />
+               </HBox.margin>
+            </Label>
+            <TextField fx:id="authorField" prefHeight="30.0" prefWidth="127.0" text="Rong.Jia">
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
+            </TextField>
+         </children>
+      </HBox>
+      <HBox layoutX="47.0" layoutY="366.0" prefHeight="34.0" prefWidth="740.0">
+         <children>
+            <Label text="父级包名">
+               <HBox.margin>
+                  <Insets top="5.0" />
+               </HBox.margin>
+            </Label>
+            <TextField fx:id="parentFolderField" prefHeight="30.0" prefWidth="680.0">
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
+            </TextField>
+         </children>
+      </HBox>
+      <HBox layoutX="46.0" layoutY="332.0" prefHeight="34.0" prefWidth="740.0">
+         <children>
+            <Label text="存放目录">
+               <HBox.margin>
+                  <Insets top="5.0" />
+               </HBox.margin>
+            </Label>
+            <TextField fx:id="javaTargetProject" editable="false" prefHeight="30.0" prefWidth="680.0" text="src/main/java">
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
+            </TextField>
+         </children>
+      </HBox>
+      <HBox layoutX="35.0" layoutY="400.0" prefHeight="30.0" prefWidth="758.0">
+         <children>
+            <Label text="实体类包名">
+               <HBox.margin>
+                  <Insets top="5.0" />
+               </HBox.margin>
+            </Label>
+            <TextField fx:id="entityFolderField" prefHeight="30.0" prefWidth="680.0" text="entity">
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
+            </TextField>
+         </children>
+      </HBox>
+      <HBox layoutX="26.0" layoutY="433.0" prefHeight="30.0" prefWidth="758.0">
+         <children>
+            <Label text="Mapper包名">
+               <HBox.margin>
+                  <Insets top="5.0" />
+               </HBox.margin>
+            </Label>
+            <TextField fx:id="mapperFolderField" prefHeight="30.0" prefWidth="357.0" text="mapper">
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
+            </TextField>
+            <Label text="接口后缀名">
+               <HBox.margin>
+                  <Insets left="10.0" top="5.0" />
+               </HBox.margin>
+            </Label>
+            <TextField fx:id="mapperNameField" prefHeight="30.0" prefWidth="242.0" text="Mapper">
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
+            </TextField>
+         </children>
+      </HBox>
+      <HBox layoutX="109.0" layoutY="508.0" prefHeight="30.0" prefWidth="523.0">
+         <children>
+            <CheckBox fx:id="dtoCheckBox" mnemonicParsing="false" prefHeight="30.0" prefWidth="102.0" selected="true" text="生成DTO" />
+            <CheckBox fx:id="serviceCheckBox" mnemonicParsing="false" prefHeight="30.0" prefWidth="153.0" selected="true" text="生成BaseService" />
+            <CheckBox fx:id="voCheckBox" mnemonicParsing="false" prefHeight="30.0" prefWidth="99.0" selected="true" text="生成VO" />
+            <CheckBox fx:id="queryCheckBox" mnemonicParsing="false" prefHeight="30.0" prefWidth="112.0" selected="true" text="生成Query" />
+         </children>
+      </HBox>
+      <HBox layoutX="48.0" layoutY="467.0" prefHeight="34.0" prefWidth="740.0">
+         <children>
+            <Label text="存放目录">
+               <HBox.margin>
+                  <Insets top="5.0" />
+               </HBox.margin>
+            </Label>
+            <TextField fx:id="mappingTargetProject" editable="false" prefHeight="30.0" prefWidth="222.0" text="src/main/resources">
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
+            </TextField>
+            <Label text="XML包名">
+               <HBox.margin>
+                  <Insets left="10.0" top="5.0" />
+               </HBox.margin>
+            </Label>
+            <TextField fx:id="mapperXmlFolderField" prefHeight="30.0" prefWidth="388.0" text="mappers">
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
+            </TextField>
+         </children>
+      </HBox>
+      <HBox layoutX="109.0" layoutY="538.0" prefHeight="30.0" prefWidth="514.0" spacing="18.0">
+         <children>
+            <CheckBox fx:id="useLombokPlugin" mnemonicParsing="false" prefHeight="30.0" prefWidth="142.0" selected="true" text="LombokPlugin" />
+            <CheckBox fx:id="overrideXML" mnemonicParsing="false" prefHeight="30.0" prefWidth="109.0" selected="true" text="覆盖原文件" />
+            <CheckBox fx:id="useSchemaPrefix" mnemonicParsing="false" prefHeight="30.0" prefWidth="147.0" text="使用Schema前缀" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER_LEFT" layoutX="135.0" layoutY="747.0" prefHeight="47.0" prefWidth="388.0" spacing="10.0">
+         <children>
+            <Button minHeight="33" mnemonicParsing="false" onAction="#generateCode" text="代码生成">
+               <styleClass>
+                  <String fx:value="btn-success" />
+                  <String fx:value="btn" />
+               </styleClass>
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button minHeight="35" mnemonicParsing="false" onAction="#saveGeneratorConfig" text="保存配置">
+               <styleClass>
+                  <String fx:value="btn" />
+                  <String fx:value="btn-default" />
+               </styleClass>
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button minHeight="35" mnemonicParsing="false" onAction="#openTargetFolder" text="打开生成文件夹">
+               <styleClass>
+                  <String fx:value="btn" />
+                  <String fx:value="btn-default" />
+               </styleClass>
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+         </children>
+      </HBox>
+   </children>
+
+</AnchorPane>

@@ -1,0 +1,103 @@
+package ${package.ServiceImpl};
+
+import ${package.Entity}.${entity};
+import ${package.Mapper}.${table.mapperName};
+import ${package.Service}.${table.serviceName};
+import ${superServiceImplClassPackage};
+
+#if(${superServiceImplClass} == 'BaseServiceImpl')
+import ${package.Vo}.${entity}VO;
+import ${package.Query}.${entity}Query;
+import ${package.Dto}.${entity}DTO;
+import com.xdcplus.mp.utils.PageableUtils;
+import com.xdcplus.mp.utils.PropertyUtils;
+import com.xdcplus.pager.dto.PageDTO;
+import com.xdcplus.pager.vo.PageVO;
+import com.xdcplus.core.lang.constants.NumberConstant;
+import com.github.pagehelper.PageInfo;
+import cn.hutool.core.bean.BeanUtil;
+import org.springframework.transaction.annotation.Transactional;
+#end
+
+import org.springframework.stereotype.Service;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import java.io.Serializable;
+import lombok.extern.slf4j.Slf4j;
+
+/**
+ * <p>
+ * $!{table.comment} 服务实现类
+ * </p>
+ *
+ * @author ${author}
+ * @since ${date}
+ */
+@Slf4j
+@Service
+#if(${kotlin})
+open class ${table.serviceImplName} : ${superServiceImplClass}<${table.mapperName}, ${entity}>(), ${table.serviceName} {
+}
+#else
+#if(${superServiceImplClass} == 'BaseServiceImpl')
+public class ${table.serviceImplName} extends ${superServiceImplClass}<${table.mapperName}, ${entity}, ${entity}, ${entity}VO> implements ${table.serviceName} {
+#else
+public class ${table.serviceImplName} extends ${superServiceImplClass}<${table.mapperName}, ${entity}> implements ${table.serviceName} {
+#end
+
+    @Autowired
+    private ${table.mapperName} ${table.mapperName.substring(0,1).toLowerCase()}${table.mapperName.substring(1)};
+
+    #if(${superServiceImplClass} == 'BaseServiceImpl')
+    @Override
+    public ${entity}VO queryById(Serializable id) {
+        return this.objectConversion(this.getById(id));
+    }
+
+    public PageVO<${entity}VO> page(PageDTO pageDTO) {
+        ${entity}Query query = new ${entity}Query();
+        BeanUtil.copyProperties(pageDTO, query);
+
+        if (pageDTO.getCurrentPage() > NumberConstant.ZERO) {
+            PageableUtils.basicPage(pageDTO);
+        }
+
+        PageInfo<${entity}> pageInfo = new PageInfo<>(${table.mapperName.substring(0,1).toLowerCase()}${table.mapperName.substring(1)}.find${entity}(query));
+        return PropertyUtils.copyProperties(pageInfo, this.objectConversion(pageInfo.getList()));
+    }
+
+    @Override
+    @Transactional(rollbackFor = RuntimeException.class)
+    public void save${entity}(${entity}DTO ${entity.substring(0,1).toLowerCase()}${entity.substring(1)}DTO) {
+
+
+
+
+    }
+
+    @Override
+    @Transactional(rollbackFor = RuntimeException.class)
+    public void update${entity}(${entity}DTO ${entity.substring(0,1).toLowerCase()}${entity.substring(1)}DTO) {
+
+
+
+
+    }
+
+    #end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+#end

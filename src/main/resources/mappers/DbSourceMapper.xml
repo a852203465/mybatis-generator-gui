@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.darkjrong.mybatis.generator.mapper.DbSourceMapper">
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.darkjrong.mybatis.generator.common.pojo.entity.DbSource">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="code" property="code"/>
+        <result column="db_type" property="dbType"/>
+        <result column="driver_class_name" property="driverClassName"/>
+        <result column="jdbc_url" property="jdbcUrl"/>
+        <result column="ip" property="ip"/>
+        <result column="port" property="port"/>
+        <result column="database_name" property="databaseName"/>
+        <result column="schema_name" property="schemaName"/>
+        <result column="username" property="username"/>
+        <result column="password" property="password"/>
+        <result column="created_user" property="createdUser"/>
+        <result column="created_time" property="createdTime"/>
+        <result column="updated_user" property="updatedUser"/>
+        <result column="updated_time" property="updatedTime"/>
+        <result column="description" property="description"/>
+
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,
+        name,
+        code,
+        db_type,
+        driver_class_name,
+        jdbc_url,
+        ip,
+        port,
+        database_name,
+        schema_name,
+        username,
+        password,
+        created_user,
+        created_time,
+        updated_user,
+        updated_time,
+        description
+    </sql>
+
+    <select id="findSource" resultMap="BaseResultMap">
+        select
+            <include refid="Base_Column_List"/>
+        from te_source
+        <where>
+            <if test="projectId != null">
+                and project_id = #{projectId,jdbcType=BIGINT}
+            </if>
+            <if test="name != null and name != ''">
+                and name like concat('%', #{name,jdbcType=VARCHAR}, '%')
+            </if>
+            <if test="dbType != null and dbType != ''">
+                and db_type = #{dbType,jdbcType=VARCHAR}
+            </if>
+            <if test="adminId != null">
+                and admin_id = #{adminId,jdbcType=BIGINT}
+            </if>
+            <if test="statuses != null and statuses.size() != 0">
+                and status in
+                <foreach collection="statuses" open="(" separator="," item="item" index="index" close=")">
+                    #{item,jdbcType=INTEGER}
+                </foreach>
+            </if>
+        </where>
+    </select>
+
+    <select id="findSourceByName" resultMap="BaseResultMap">
+        select
+            <include refid="Base_Column_List"/>
+        from te_source
+        where name = #{name,jdbcType=VARCHAR}
+    </select>
+
+    <select id="findSourceByCode" resultMap="BaseResultMap">
+        select
+            <include refid="Base_Column_List"/>
+        from te_source
+        where code = #{code,jdbcType=VARCHAR}
+    </select>
+
+    <select id="findSourceUnique" resultMap="BaseResultMap">
+        select
+            <include refid="Base_Column_List"/>
+        from te_source
+        <where>
+            db_type = #{dbType,jdbcType=VARCHAR}
+            and ip = #{ip,jdbcType=VARCHAR}
+            and port = #{port,jdbcType=VARCHAR}
+            and database_name = #{database,jdbcType=VARCHAR}
+            <if test="schema != null and schema != ''">
+                and schema_name = #{schema,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </select>
+
+    <select id="findSourceByDbInfo" resultMap="BaseResultMap">
+        select
+            <include refid="Base_Column_List"/>
+        from te_source
+        <where>
+            db_type = #{dbType,jdbcType=VARCHAR}
+            and ip = #{ip,jdbcType=VARCHAR}
+            and port = #{port,jdbcType=VARCHAR}
+            and database_name = #{database,jdbcType=VARCHAR}
+        </where>
+    </select>
+
+    <select id="findSourcesByIds" resultMap="BaseResultMap">
+        select
+            <include refid="Base_Column_List"/>
+        from te_source
+        <where>
+            and id in
+            <foreach collection="ids" close=")" index="index" item="item" open="(" separator=",">
+                #{item,jdbcType=BIGINT}
+            </foreach>
+        </where>
+    </select>
+
+
+</mapper>

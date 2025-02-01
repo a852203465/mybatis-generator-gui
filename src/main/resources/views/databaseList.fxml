@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TreeView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxWidth="500.0" minWidth="200.0" prefHeight="647.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cn.darkjrong.mybatis.generator.controller.DatabaseListController">
+
+    <TreeView fx:id="leftDBTree" layoutX="-14.0" layoutY="-3.0" maxWidth="200.0" prefHeight="623.0" prefWidth="200.0" AnchorPane.bottomAnchor="27.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-3.0" />
+    <TextField fx:id="filterTreeBox" layoutY="504.0" prefHeight="26.0" prefWidth="200.0" promptText="搜索" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+
+</AnchorPane>

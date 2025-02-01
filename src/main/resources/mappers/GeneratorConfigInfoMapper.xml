@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.darkjrong.mybatis.generator.mapper.GeneratorConfigInfoMapper">
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.darkjrong.mybatis.generator.common.pojo.entity.GeneratorConfigInfo">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="code" property="code"/>
+        <result column="project_path" property="projectPath"/>
+        <result column="author" property="author"/>
+        <result column="java_source_path" property="javaSourcePath"/>
+        <result column="parent_path" property="parentPath"/>
+        <result column="entity_package" property="entityPackage"/>
+        <result column="mapper_package" property="mapperPackage"/>
+        <result column="mapper_suffix_name" property="mapperSuffixName"/>
+        <result column="java_resource_path" property="javaResourcePath"/>
+        <result column="mapper_xml_path" property="mapperXmlPath"/>
+        <result column="gen_vo" property="genVo"/>
+        <result column="gen_bae_service" property="genBaeService"/>
+        <result column="gen_dto" property="genDto"/>
+        <result column="gen_query" property="genQuery"/>
+        <result column="use_lombok_plugin" property="useLombokPlugin"/>
+        <result column="override_xml" property="overrideXml"/>
+        <result column="use_schema_prefix" property="useSchemaPrefix"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,
+        name,
+        code,
+        project_path,
+        author,
+        java_source_path,
+        parent_path,
+        entity_package,
+        mapper_package,
+        mapper_suffix_name,
+        java_resource_path,
+        mapper_xml_path,
+        gen_vo,
+        gen_bae_service,
+        gen_dto,
+        gen_query,
+        use_lombok_plugin,
+        override_xml,
+        use_schema_prefix
+    </sql>
+
+
+    <select id="findGeneratorConfigInfo" resultMap="BaseResultMap">
+        select
+            <include refid="Base_Column_List"/>
+        from generator_config_info
+        <where>
+            <if test="name != null">
+                and name = #{name}
+            </if>
+            <if test="code != null">
+                and code = #{code}
+            </if>
+            <if test="projectPath != null">
+                and project_path = #{projectPath}
+            </if>
+            <if test="author != null">
+                and author = #{author}
+            </if>
+            <if test="javaSourcePath != null">
+                and java_source_path = #{javaSourcePath}
+            </if>
+            <if test="parentPath != null">
+                and parent_path = #{parentPath}
+            </if>
+            <if test="entityPackage != null">
+                and entity_package = #{entityPackage}
+            </if>
+            <if test="mapperPackage != null">
+                and mapper_package = #{mapperPackage}
+            </if>
+            <if test="mapperSuffixName != null">
+                and mapper_suffix_name = #{mapperSuffixName}
+            </if>
+            <if test="javaResourcePath != null">
+                and java_resource_path = #{javaResourcePath}
+            </if>
+            <if test="mapperXmlPath != null">
+                and mapper_xml_path = #{mapperXmlPath}
+            </if>
+            <if test="genVo != null">
+                and gen_vo = #{genVo}
+            </if>
+            <if test="genBaeService != null">
+                and gen_bae_service = #{genBaeService}
+            </if>
+            <if test="genDto != null">
+                and gen_dto = #{genDto}
+            </if>
+            <if test="genQuery != null">
+                and gen_query = #{genQuery}
+            </if>
+            <if test="useLombokPlugin != null">
+                and use_lombok_plugin = #{useLombokPlugin}
+            </if>
+            <if test="overrideXml != null">
+                and override_xml = #{overrideXml}
+            </if>
+            <if test="useSchemaPrefix != null">
+                and use_schema_prefix = #{useSchemaPrefix}
+            </if>
+        </where>
+    </select>
+
+    <select id="findGeneratorConfigInfoByName" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from generator_config_info
+        where name = #{name,jdbcType=VARCHAR}
+    </select>
+
+    <delete id="deleteGeneratorConfigInfoByCode">
+        delete from generator_config_info
+        where code = #{code,jdbcType=VARCHAR}
+    </delete>
+
+    <select id="findGeneratorConfigInfoByCode" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from generator_config_info
+        where code = #{code,jdbcType=VARCHAR}
+    </select>
+</mapper>
