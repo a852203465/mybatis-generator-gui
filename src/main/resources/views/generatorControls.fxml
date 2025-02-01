@@ -172,7 +172,7 @@
             <CheckBox fx:id="useSchemaPrefix" mnemonicParsing="false" prefHeight="30.0" prefWidth="147.0" text="使用Schema前缀" />
          </children>
       </HBox>
-      <HBox alignment="CENTER_LEFT" layoutX="135.0" layoutY="747.0" prefHeight="47.0" prefWidth="388.0" spacing="10.0">
+      <HBox alignment="CENTER_LEFT" layoutX="105.0" layoutY="747.0" prefHeight="47.0" prefWidth="388.0" spacing="10.0">
          <children>
             <Button minHeight="33" mnemonicParsing="false" onAction="#generateCode" text="代码生成">
                <styleClass>
