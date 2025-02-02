@@ -29,6 +29,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
 /**
  * 数据库列表控制器
@@ -127,6 +128,11 @@ public class DatabaseListController extends BaseFxController {
             String filter = filterTreeBox.getText();
             log.info("filter: {}", filter);
             List<String> tables = databaseMetaFactory.getTables(dataSource);
+            if (StrUtil.isNotBlank(filter)) {
+                tables = tables.stream()
+                        .filter(a -> StrUtil.containsIgnoreCase(a, filter))
+                        .collect(Collectors.toList());
+            }
             if (CollUtil.isNotEmpty(tables)) {
                 ObservableList<TreeItem<String>> children = treeItem.getChildren();
                 children.clear();
