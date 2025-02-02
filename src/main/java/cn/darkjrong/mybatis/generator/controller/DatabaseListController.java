@@ -125,6 +125,7 @@ public class DatabaseListController extends BaseFxController {
         DataSource dataSource = (DataSource) treeItem.getGraphic().getUserData();
         try {
             String filter = filterTreeBox.getText();
+            log.info("filter: {}", filter);
             List<String> tables = databaseMetaFactory.getTables(dataSource);
             if (CollUtil.isNotEmpty(tables)) {
                 ObservableList<TreeItem<String>> children = treeItem.getChildren();

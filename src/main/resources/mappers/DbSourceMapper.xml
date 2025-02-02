@@ -47,7 +47,7 @@
     <select id="findSource" resultMap="BaseResultMap">
         select
             <include refid="Base_Column_List"/>
-        from te_source
+        from db_source
         <where>
             <if test="projectId != null">
                 and project_id = #{projectId,jdbcType=BIGINT}
@@ -73,21 +73,21 @@
     <select id="findSourceByName" resultMap="BaseResultMap">
         select
             <include refid="Base_Column_List"/>
-        from te_source
+        from db_source
         where name = #{name,jdbcType=VARCHAR}
     </select>
 
     <select id="findSourceByCode" resultMap="BaseResultMap">
         select
             <include refid="Base_Column_List"/>
-        from te_source
+        from db_source
         where code = #{code,jdbcType=VARCHAR}
     </select>
 
     <select id="findSourceUnique" resultMap="BaseResultMap">
         select
             <include refid="Base_Column_List"/>
-        from te_source
+        from db_source
         <where>
             db_type = #{dbType,jdbcType=VARCHAR}
             and ip = #{ip,jdbcType=VARCHAR}
@@ -102,7 +102,7 @@
     <select id="findSourceByDbInfo" resultMap="BaseResultMap">
         select
             <include refid="Base_Column_List"/>
-        from te_source
+        from db_source
         <where>
             db_type = #{dbType,jdbcType=VARCHAR}
             and ip = #{ip,jdbcType=VARCHAR}
@@ -114,7 +114,7 @@
     <select id="findSourcesByIds" resultMap="BaseResultMap">
         select
             <include refid="Base_Column_List"/>
-        from te_source
+        from db_source
         <where>
             and id in
             <foreach collection="ids" close=")" index="index" item="item" open="(" separator=",">
