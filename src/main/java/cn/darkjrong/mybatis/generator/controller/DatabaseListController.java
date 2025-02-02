@@ -161,11 +161,8 @@ public class DatabaseListController extends BaseFxController {
                 dbImage.setUserData(treeItem.getGraphic().getUserData());
                 treeItem.setGraphic(dbImage);
             }
-        } /*catch (SQLRecoverableException e) {
-            log.error(e.getMessage(), e);
-            AlertUtils.showErrorAlert("连接超时");
-        } */ catch (Exception e) {
-            log.error(e.getMessage(), e);
+        } catch (Exception e) {
+            log.error(String.format("加载表树异常, 【%s】", e.getMessage()), e);
             AlertUtils.showErrorAlert(e.getMessage());
         }
     }
