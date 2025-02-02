@@ -137,7 +137,7 @@ public class MybatisGeneratorFxApplication extends Application {
                         lastClickTime = DateUtil.current();
                     } else {
                         Long now = DateUtil.current();
-                        boolean isClick = (now - lastClickTime) < 1000;
+                        boolean isClick = (now - lastClickTime) < 500;
                         if (isClick) {
                             log.info("================= 打开主界面 =================");
                             Platform.runLater(() -> {
