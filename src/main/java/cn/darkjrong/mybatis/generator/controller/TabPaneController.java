@@ -30,15 +30,9 @@ public class TabPaneController extends BaseFxController {
     private TabPane tabPane;
 
     @Autowired
-    private DbConnectionController tabControlAController;
-
-//    @FXML
-//    private OverSshController tabControlBController;
+    private DbConnectionController dbConnectionController;
 
     private boolean isOverssh;
-
-    @Autowired
-    private MainController mainController;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -52,7 +46,7 @@ public class TabPaneController extends BaseFxController {
     }
 
     public void setConfig(DataSource selectedConfig) {
-        tabControlAController.setConfig(selectedConfig);
+        dbConnectionController.setConfig(selectedConfig);
 //        tabControlBController.setDbConnectionConfig(selectedConfig);
 //        if (ObjectUtil.isAllNotEmpty(
 //                selectedConfig.getSshHost(),
@@ -71,7 +65,7 @@ public class TabPaneController extends BaseFxController {
 //        } else {
 //            return tabControlAController.extractConfigForUI();
 //        }
-        return tabControlAController.extractConfigForUI();
+        return dbConnectionController.extractConfigForUI();
     }
 
     @FXML
@@ -79,7 +73,7 @@ public class TabPaneController extends BaseFxController {
         if (isOverssh) {
 //            tabControlBController.saveConfig();
         } else {
-            tabControlAController.saveConnection();
+            dbConnectionController.saveConnection();
         }
     }
 

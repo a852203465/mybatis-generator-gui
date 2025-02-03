@@ -22,6 +22,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * DB 连接控制器
+ *
+ * @author Rong.Jia
+ * @date 2025/02/03
+ */
 @Slf4j
 @ViewController
 public class DbConnectionController extends BaseFxController {
