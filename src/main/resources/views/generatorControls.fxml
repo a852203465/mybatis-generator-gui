@@ -158,7 +158,7 @@
                   <Insets left="10.0" top="5.0" />
                </HBox.margin>
             </Label>
-            <TextField fx:id="mapperXmlFolderField" prefHeight="30.0" prefWidth="388.0" text="mappers">
+            <TextField fx:id="mapperXmlFolderField" prefHeight="30.0" prefWidth="387.0" text="mappers">
                <HBox.margin>
                   <Insets left="10.0" />
                </HBox.margin>
