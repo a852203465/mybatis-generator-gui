@@ -1,11 +1,15 @@
 package cn.darkjrong.mybatis.generator.controller;
 
 import cn.darkjrong.mybatis.generator.common.domain.DataSource;
+import cn.darkjrong.mybatis.generator.common.enums.DbTypePort;
 import cn.darkjrong.mybatis.generator.common.pojo.dto.DbSourceDTO;
 import cn.darkjrong.mybatis.generator.common.utils.AlertUtils;
 import cn.darkjrong.mybatis.generator.common.utils.DataSourceUtils;
 import cn.darkjrong.mybatis.generator.controller.base.BaseFxController;
 import cn.darkjrong.mybatis.generator.service.DbSourceService;
+import cn.hutool.core.convert.Convert;
+import cn.hutool.core.util.ObjectUtil;
+import cn.hutool.core.util.StrUtil;
 import cn.hutool.extra.spring.SpringUtil;
 import com.alibaba.fastjson.JSON;
 import com.github.spring.boot.javafx.stereotype.ViewController;
@@ -48,6 +52,16 @@ public class DbConnectionController extends BaseFxController {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        dbTypeChoice.setOnAction(event -> {
+            String selectedItem = dbTypeChoice.getSelectionModel().getSelectedItem();
+            log.info("The database type is currently selected 【{}】 ", selectedItem);
+            if (StrUtil.isNotBlank(selectedItem)) {
+                DbTypePort dbTypePort = DbTypePort.valueOf(selectedItem);
+                if (ObjectUtil.isNotNull(dbTypePort)) {
+                    portField.setText(Convert.toStr(dbTypePort.getValue()));
+                }
+            }
+        });
     }
 
     final void saveConnection() {
