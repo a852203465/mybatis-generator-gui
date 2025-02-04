@@ -62,8 +62,8 @@ public abstract class BaseFxController implements Initializable {
         } catch (Exception e) {
             log.error(String.format("load FXMLPage 【%s】 failed, 【%s】", fxml, e.getMessage()), e);
             AlertUtils.showErrorAlert(e.getMessage());
+            throw new ViewException(String.format("load FXMLPage 【%s】 failed, 【%s】", fxml, e.getMessage()));
         }
-        return null;
     }
 
     public void showDialogStage() {
