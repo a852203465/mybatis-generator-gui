@@ -40,7 +40,7 @@
     <center>
         <SplitPane>
             <items>
-            <HBox prefHeight="100.0" prefWidth="200.0">
+            <HBox>
                <children>
                       <fx:include fx:id="databaseList" source="databaseList.fxml" />
                       <fx:include fx:id="generatorControls" source="generatorControls.fxml" />
