@@ -3,12 +3,13 @@ package ${package.ServiceImpl};
 import ${package.Entity}.${entity};
 import ${package.Mapper}.${table.mapperName};
 import ${package.Service}.${table.serviceName};
-import ${superServiceImplClassPackage};
+
 
 #if(${superServiceImplClass} == 'BaseServiceImpl')
 import ${package.Vo}.${entity}VO;
 import ${package.Query}.${entity}Query;
 import ${package.Dto}.${entity}DTO;
+import ${superServiceImplClassPackage};
 import com.xdcplus.mp.utils.PageableUtils;
 import com.xdcplus.mp.utils.PropertyUtils;
 import com.xdcplus.pager.dto.PageDTO;
