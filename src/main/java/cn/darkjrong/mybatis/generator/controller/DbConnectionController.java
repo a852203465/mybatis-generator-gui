@@ -1,6 +1,7 @@
 package cn.darkjrong.mybatis.generator.controller;
 
 import cn.darkjrong.mybatis.generator.common.domain.DataSource;
+import cn.darkjrong.mybatis.generator.common.enums.DbType;
 import cn.darkjrong.mybatis.generator.common.enums.DbTypePort;
 import cn.darkjrong.mybatis.generator.common.pojo.dto.DbSourceDTO;
 import cn.darkjrong.mybatis.generator.common.utils.AlertUtils;
@@ -10,7 +11,6 @@ import cn.darkjrong.mybatis.generator.service.DbSourceService;
 import cn.hutool.core.convert.Convert;
 import cn.hutool.core.util.ObjectUtil;
 import cn.hutool.core.util.StrUtil;
-import cn.hutool.extra.spring.SpringUtil;
 import com.alibaba.fastjson.JSON;
 import com.github.spring.boot.javafx.stereotype.ViewController;
 import javafx.fxml.FXML;
@@ -52,6 +52,8 @@ public class DbConnectionController extends BaseFxController {
     private TabPaneController tabPaneController;
     @Autowired
     private DatabaseListController databaseListController;
+    @Autowired
+    private DbSourceService dbSourceService;
 
     private boolean isUpdate = false;
     private Long primayKey;
@@ -83,6 +85,18 @@ public class DbConnectionController extends BaseFxController {
 //            AlertUtils.showWarnAlert("密码以外其他字段必填");
 //        }
 
+        if (StrUtil.equalsIgnoreCase(dbType, DbType.oracle.name())) {
+            if (StrUtil.isNotBlank(database)) {
+                database = database.toUpperCase();
+            }
+            if (StrUtil.isNotBlank(schema)) {
+                schema = schema.toUpperCase();
+            }
+            if (StrUtil.isNotBlank(userName)) {
+                userName = userName.toUpperCase();
+            }
+        }
+
         DbSourceDTO dbSourceDTO = new DbSourceDTO();
         dbSourceDTO.setName(name);
         dbSourceDTO.setIp(host);
@@ -92,7 +106,6 @@ public class DbConnectionController extends BaseFxController {
         dbSourceDTO.setSchemaName(schema);
         dbSourceDTO.setUsername(userName);
         dbSourceDTO.setPassword(password);
-        DbSourceService dbSourceService = SpringUtil.getBean(DbSourceService.class);
 
         try {
             if (isUpdate) {

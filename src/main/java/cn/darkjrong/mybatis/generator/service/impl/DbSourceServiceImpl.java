@@ -52,11 +52,13 @@ public class DbSourceServiceImpl extends BaseServiceImpl<DbSourceMapper, DbSourc
         DbSource dbSource = dbSourceMapper.findSourceByName(dbSourceDTO.getName());
         if (ObjectUtil.isNotNull(dbSource)) {
             AlertUtils.showErrorAlert("数据源已存在");
+            throw new RuntimeException("数据源已存在");
         }
         dbSource = dbSourceMapper.findSourceUnique(dbSourceDTO.getDbType(), dbSourceDTO.getIp(),
                 dbSourceDTO.getPort(), dbSourceDTO.getDatabaseName(), dbSourceDTO.getSchemaName());
         if (ObjectUtil.isNotNull(dbSource)) {
             AlertUtils.showErrorAlert("数据源已存在");
+            throw new RuntimeException("数据源已存在");
         }
 
         DataSourceDTO dataSourceDTO = new DataSourceDTO();
@@ -79,17 +81,20 @@ public class DbSourceServiceImpl extends BaseServiceImpl<DbSourceMapper, DbSourc
         DbSource dbSource = this.getById(dbSourceDTO.getId());
         if (ObjectUtil.isNull(dbSource)) {
             AlertUtils.showErrorAlert("数据源信息不存在");
+            throw new RuntimeException("数据源信息不存在");
         }
 
         DbSource dbSourceEntity = dbSourceMapper.findSourceByName(dbSourceDTO.getName());
         if (ObjectUtil.isNotNull(dbSourceEntity) && ObjectUtil.notEqual(dbSourceEntity.getCode(), dbSource.getCode())) {
             log.error("**********,updateSource(),数据源名【{}】已存在", dbSourceDTO.getName());
             AlertUtils.showErrorAlert("数据源已存在");
+            throw new RuntimeException("数据源已存在");
         }
         dbSourceEntity = dbSourceMapper.findSourceUnique(dbSourceDTO.getDbType(), dbSourceDTO.getIp(),
                 dbSourceDTO.getPort(), dbSourceDTO.getDatabaseName(), dbSourceDTO.getSchemaName());
         if (ObjectUtil.isNotNull(dbSourceEntity) && ObjectUtil.notEqual(dbSourceEntity.getCode(), dbSource.getCode())) {
             AlertUtils.showErrorAlert("数据源已存在");
+            throw new RuntimeException("数据源已存在");
         }
 
         DataSourceDTO dataSourceDTO = new DataSourceDTO();

@@ -1,12 +1,11 @@
 package ${package.Service};
 
 import ${package.Entity}.${entity};
-import ${superServiceClassPackage};
 
 #if(${superServiceClass} == 'BaseService')
 import ${package.Vo}.${entity}VO;
 import ${package.Dto}.${entity}DTO;
-import com.xdcplus.mp.service.BaseService;
+import ${superServiceClassPackage};
 #end
 
 /**

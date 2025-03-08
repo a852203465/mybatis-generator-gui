@@ -1,7 +1,6 @@
 package cn.darkjrong.mybatis.generator.common.pojo.dto;
 
 import cn.darkjrong.mybatis.generator.common.enums.DbType;
-import cn.hutool.core.util.StrUtil;
 import com.xdcplus.mp.domain.mysql.Base;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -69,11 +68,4 @@ public class DbSourceDTO extends Base implements Serializable {
 
 
 
-    public String getSchemaName() {
-        return StrUtil.isBlank(schemaName) ? schemaName : schemaName.toLowerCase();
-    }
-
-    public String getDatabaseName() {
-        return StrUtil.isBlank(databaseName) ? databaseName : databaseName.toLowerCase();
-    }
 }

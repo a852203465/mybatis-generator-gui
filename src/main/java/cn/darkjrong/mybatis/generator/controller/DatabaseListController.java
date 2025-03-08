@@ -11,7 +11,6 @@ import cn.darkjrong.mybatis.generator.service.DbSourceService;
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.util.ObjectUtil;
 import cn.hutool.core.util.StrUtil;
-import cn.hutool.extra.spring.SpringUtil;
 import com.github.spring.boot.javafx.stereotype.ViewController;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -90,7 +89,7 @@ public class DatabaseListController extends BaseFxController {
                     item3.setOnAction(event1 -> {
                         DataSource dataSource = (DataSource) treeItem.getGraphic().getUserData();
                         try {
-                            SpringUtil.getBean(DbSourceService.class).delete(dataSource.getSourceId());
+                            dbSourceService.delete(dataSource.getSourceId());
                             this.loadLeftDBTree();
                         } catch (Exception e) {
                             AlertUtils.showErrorAlert("Delete connection failed! Reason: " + e.getMessage());

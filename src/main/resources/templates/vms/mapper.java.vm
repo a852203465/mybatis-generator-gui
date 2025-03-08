@@ -5,7 +5,7 @@ import ${superMapperClassPackage};
 #if(${mapperAnnotation})
 import org.apache.ibatis.annotations.Mapper;
 #end
-#if(${superServiceImplClass})
+#if(${superServiceImplClass} == 'BaseServiceImpl')
 import ${package.Query}.${entity}Query;
 #end
 
