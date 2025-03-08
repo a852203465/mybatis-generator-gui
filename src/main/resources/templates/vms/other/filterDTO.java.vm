@@ -23,7 +23,6 @@ import java.io.Serializable;
 public class ${entity}FilterDTO extends PageDTO implements Serializable {
 
     private static final long serialVersionUID = 1L;
-
 #foreach(${field} in ${table.fields})
     #if(${field.propertyName} != 'id'
     && ${field.propertyName} != 'createdUser'
