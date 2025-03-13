@@ -1,5 +1,8 @@
 package ${package.Vo};
 
+#foreach($pkg in ${table.importPackages})
+import ${pkg};
+#end
 import lombok.Data;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;

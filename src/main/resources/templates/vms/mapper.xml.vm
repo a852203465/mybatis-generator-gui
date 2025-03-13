@@ -49,7 +49,7 @@
                 && ${field.propertyName} != 'updatedUser'
                 && ${field.propertyName} != 'updatedTime'
                 && ${field.propertyName} != 'description')
-                <if test="${field.propertyName} != null#if(${field.propertyType}=="java.lang.String") and ${field.propertyName} != ''#end">
+                <if test="${field.propertyName} != null#if(${field.propertyType}=="String") and ${field.propertyName} != ''#end">
                     and ${field.name} = #{$field.propertyName}
                 </if>
                 #end

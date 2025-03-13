@@ -1,5 +1,9 @@
 package ${package.Dto};
 
+#foreach($pkg in ${table.importPackages})
+import ${pkg};
+#end
+
 import com.xdcplus.pager.dto.PageDTO;
 
 import lombok.EqualsAndHashCode;
