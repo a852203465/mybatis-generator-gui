@@ -225,7 +225,8 @@ public class GeneratorControlsController extends BaseFxController {
             projectFolderField.clear();
             parentFolderField.clear();
             AlertUtils.showInfoAlert("生成成功");
-        }catch (Exception e) {
+        } catch (Exception e) {
+            log.error(String.format("代码生成异常 【{}】", e.getMessage()), e);
             AlertUtils.showErrorAlert(e.getMessage());
         }
     }
