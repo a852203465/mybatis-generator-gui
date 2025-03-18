@@ -3,11 +3,17 @@ package ${package.Vo};
 #foreach($pkg in ${table.importPackages})
 import ${pkg};
 #end
+
+import lombok.EqualsAndHashCode;
 import lombok.Data;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.Serializable;
-import java.util.Random;
+
+#if(${table.dbType}=='oracle')
+import com.xdcplus.mp.domain.oracle.Base;
+#else
+import com.xdcplus.mp.domain.mysql.Base;
+#end
 
 /**
  * <p>
@@ -18,17 +24,25 @@ import java.util.Random;
  * @since ${date}
  */
 @Data
+@EqualsAndHashCode(callSuper = true)
 @ApiModel("${table.comment}")
-public class ${entity}VO implements Serializable {
+public class ${entity}VO extends Base implements Serializable {
 
     private static final long serialVersionUID = 1L;
     #foreach(${field} in ${table.fields})
+        #if(${field.propertyName} != 'id'
+        && ${field.propertyName} != 'createdUser'
+        && ${field.propertyName} != 'createdTime'
+        && ${field.propertyName} != 'updatedUser'
+        && ${field.propertyName} != 'updatedTime'
+        && ${field.propertyName} != 'description')
 
     /**
      * ${field.comment}
      */
     @ApiModelProperty("${field.comment}")
     private #if(${field.propertyType}=='Blob')byte[]#else${field.propertyType}#end ${field.propertyName};
+        #end
     #end
 
 }

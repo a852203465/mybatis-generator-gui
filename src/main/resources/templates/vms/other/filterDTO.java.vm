@@ -5,13 +5,10 @@ import ${pkg};
 #end
 
 import com.xdcplus.pager.dto.PageDTO;
-
 import lombok.EqualsAndHashCode;
 import lombok.Data;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-
-import java.io.Serializable;
 
 /**
  * <p>

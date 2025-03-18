@@ -1,8 +1,5 @@
 package ${package.Query};
 
-#foreach($pkg in ${table.importPackages})
-import ${pkg};
-#end
 import ${package.Dto}.${entity}FilterDTO;
 import lombok.EqualsAndHashCode;
 import lombok.Data;
