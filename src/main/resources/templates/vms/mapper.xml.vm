@@ -50,7 +50,19 @@
                 && ${field.propertyName} != 'updatedTime'
                 && ${field.propertyName} != 'description')
                 <if test="${field.propertyName} != null#if(${field.propertyType}=="String") and ${field.propertyName} != ''#end">
+                #if(${table.dbType} == 'oracle')
+                    #if(${field.propertyType}=="String")
+                    and ${field.name} like '%'||#{$field.propertyName}||'%'
+                    #else
                     and ${field.name} = #{$field.propertyName}
+                    #end
+                #else
+                    #if(${field.propertyType}=="String")
+                    and ${field.name} like concat('%', #{$field.propertyName}, '%')
+                    #else
+                    and ${field.name} = #{$field.propertyName}
+                    #end
+                #end
                 </if>
                 #end
             #end
