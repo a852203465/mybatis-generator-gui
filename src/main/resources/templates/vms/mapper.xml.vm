@@ -34,7 +34,6 @@
 #end
         ${table.fieldNames}
     </sql>
-
 #end
 
     <select id="find${entity}" resultMap="BaseResultMap">

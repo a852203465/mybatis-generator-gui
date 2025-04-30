@@ -33,11 +33,10 @@ public interface ${table.serviceName} extends ${superServiceClass}<${entity}> {
     void save${entity}(${entity}DTO ${entity.substring(0,1).toLowerCase()}${entity.substring(1)}DTO);
 
     /**
-     * update${table.comment}
+     * 修改${table.comment}
      * @param ${entity.substring(0,1).toLowerCase()}${entity.substring(1)}DTO 修改${table.comment}参数
      */
     void update${entity}(${entity}DTO ${entity.substring(0,1).toLowerCase()}${entity.substring(1)}DTO);
-
     #end
 
 
