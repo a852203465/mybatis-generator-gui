@@ -82,6 +82,7 @@ public class DatabaseListController extends BaseFxController {
                     item2.setOnAction(event1 -> {
                         DataSource selectedConfig = (DataSource) treeItem.getGraphic().getUserData();
                         TabPaneController controller = (TabPaneController) showView("编辑数据库连接", FXMLPage.NEW_CONNECTION.getFxml());
+
                         controller.setConfig(selectedConfig);
                         controller.showDialogStage();
                     });
