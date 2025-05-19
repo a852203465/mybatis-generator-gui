@@ -26,6 +26,7 @@ import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.net.URL;
+import java.util.Comparator;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
@@ -134,6 +135,9 @@ public class DatabaseListController extends BaseFxController {
                         .collect(Collectors.toList());
             }
             if (CollUtil.isNotEmpty(tables)) {
+                tables = tables.stream()
+                        .sorted(Comparator.comparing(a -> a))
+                        .collect(Collectors.toList());
                 ObservableList<TreeItem<String>> children = treeItem.getChildren();
                 children.clear();
                 for (String tableName : tables) {
