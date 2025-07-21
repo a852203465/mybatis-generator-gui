@@ -77,18 +77,29 @@ public class DatabaseListController extends BaseFxController {
                 TreeItem<String> treeItem = treeCell.getTreeItem();
                 if (level == 1) {
                     final ContextMenu contextMenu = new ContextMenu();
-                    MenuItem item1 = new MenuItem("关闭连接");
-                    item1.setOnAction(event1 -> treeItem.getChildren().clear());
-                    MenuItem item2 = new MenuItem("编辑连接");
-                    item2.setOnAction(event1 -> {
+                    MenuItem closeConn = new MenuItem("关闭连接");
+                    closeConn.setOnAction(event1 -> treeItem.getChildren().clear());
+
+                    MenuItem copyConn = new MenuItem("复制连接");
+                    copyConn.setOnAction(event1 -> {
+                        DataSource selectedConfig = (DataSource) treeItem.getGraphic().getUserData();
+                        TabPaneController controller = (TabPaneController) showView("复制数据库连接", FXMLPage.NEW_CONNECTION.getFxml());
+
+                        controller.setConfig(selectedConfig, Boolean.TRUE);
+                        controller.showDialogStage();
+                    });
+
+                    MenuItem editConn = new MenuItem("编辑连接");
+                    editConn.setOnAction(event1 -> {
                         DataSource selectedConfig = (DataSource) treeItem.getGraphic().getUserData();
                         TabPaneController controller = (TabPaneController) showView("编辑数据库连接", FXMLPage.NEW_CONNECTION.getFxml());
 
-                        controller.setConfig(selectedConfig);
+                        controller.setConfig(selectedConfig, Boolean.FALSE);
                         controller.showDialogStage();
                     });
-                    MenuItem item3 = new MenuItem("删除连接");
-                    item3.setOnAction(event1 -> {
+
+                    MenuItem deleteConn = new MenuItem("删除连接");
+                    deleteConn.setOnAction(event1 -> {
                         DataSource dataSource = (DataSource) treeItem.getGraphic().getUserData();
                         try {
                             dbSourceService.delete(dataSource.getSourceId());
@@ -97,7 +108,7 @@ public class DatabaseListController extends BaseFxController {
                             AlertUtils.showErrorAlert("Delete connection failed! Reason: " + e.getMessage());
                         }
                     });
-                    contextMenu.getItems().addAll(item1, item2, item3);
+                    contextMenu.getItems().addAll(copyConn, editConn, closeConn, deleteConn);
                     cell.setContextMenu(contextMenu);
                 }
                 if (event.getClickCount() == 2 && level == 1 && ObjectUtil.isNotNull(treeItem)) {

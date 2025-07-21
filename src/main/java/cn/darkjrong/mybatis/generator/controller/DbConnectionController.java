@@ -52,7 +52,9 @@ public class DbConnectionController extends BaseFxController {
     @Autowired
     private DbSourceService dbSourceService;
 
-    private boolean isUpdate = false;
+    private Boolean isUpdate = false;
+    private Boolean isCopy = false;
+
     private Long primayKey;
 
     @Override
@@ -105,10 +107,12 @@ public class DbConnectionController extends BaseFxController {
         dbSourceDTO.setPassword(password);
 
         try {
-            if (isUpdate) {
+            if (isUpdate && !isCopy) {
                 dbSourceDTO.setId(primayKey);
                 dbSourceService.updateSource(dbSourceDTO);
-            }else {
+            } else if (isCopy) {
+                dbSourceService.saveSource(dbSourceDTO);
+            } else {
                 dbSourceService.saveSource(dbSourceDTO);
             }
             tabPaneController.getDialogStage().close();
@@ -130,8 +134,9 @@ public class DbConnectionController extends BaseFxController {
         return dataSource;
     }
 
-    public void setConfig(DataSource config) {
+    public void setConfig(DataSource config, Boolean isCopy) {
         isUpdate = true;
+        this.isCopy = isCopy;
         primayKey = config.getSourceId(); // save id for update config
         nameField.setText(config.getName());
         hostField.setText(config.getIp());

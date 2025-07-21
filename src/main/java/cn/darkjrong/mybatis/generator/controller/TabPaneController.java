@@ -45,8 +45,8 @@ public class TabPaneController extends BaseFxController {
         });
     }
 
-    public void setConfig(DataSource selectedConfig) {
-        dbConnectionController.setConfig(selectedConfig);
+    public void setConfig(DataSource selectedConfig, Boolean isCopy) {
+        dbConnectionController.setConfig(selectedConfig, isCopy);
 //        tabControlBController.setDbConnectionConfig(selectedConfig);
 //        if (ObjectUtil.isAllNotEmpty(
 //                selectedConfig.getSshHost(),

@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Mybatis Generator GUI"
-#define MyAppVersion "1.7"
+#define MyAppVersion "1.8"
 #define MyAppExeName "mybatis-generator-gui.exe"
 #define MyAppPublisher "Darkjrong Company, Inc."
 #define MyAppURL "https://www.darkjrong.com/"
