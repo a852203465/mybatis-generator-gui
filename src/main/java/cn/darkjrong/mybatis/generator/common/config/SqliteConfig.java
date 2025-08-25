@@ -17,7 +17,7 @@ import javax.sql.DataSource;
 @Configuration
 public class SqliteConfig {
 
-    private static final String DB_DIR = System.getProperty("user.dir") + "/db/";
+    private static final String DB_DIR = "C:/mggui/";
     // key: 密码,cipher:算法, legacy:版本
     private static final String DB_FILE = "mggui.db";
 
