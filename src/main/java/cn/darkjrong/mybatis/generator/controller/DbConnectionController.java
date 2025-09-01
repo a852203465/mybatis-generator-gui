@@ -80,9 +80,51 @@ public class DbConnectionController extends BaseFxController {
         String dbType = dbTypeChoice.getValue();
         String database = databaseField.getText();
         String schema = schemaField.getText();
-//        if (StringUtils.isAnyEmpty(name, host, port, userName, dbType, database)) {
-//            AlertUtils.showWarnAlert("密码以外其他字段必填");
-//        }
+
+        if (StrUtil.isBlank(name)) {
+            AlertUtils.showWarnAlert("连接名称不能为空");
+            return;
+        }
+        if (StrUtil.isBlank(dbType)) {
+            AlertUtils.showWarnAlert("数据库类型不能为空");
+            return;
+        }
+        if (StrUtil.isBlank(host)) {
+            AlertUtils.showWarnAlert("数据库IP地址不能为空");
+            return;
+        }
+        if (StrUtil.isBlank(port)) {
+            AlertUtils.showWarnAlert("数据库端口不能为空");
+            return;
+        }
+        if (StrUtil.isBlank(userName)) {
+            AlertUtils.showWarnAlert("用户名不能为空");
+            return;
+        }
+        if (StrUtil.isBlank(password)) {
+            AlertUtils.showWarnAlert("密码不能为空");
+            return;
+        }
+        if (StrUtil.isBlank(database)) {
+            AlertUtils.showWarnAlert("数据库不能为空");
+            return;
+        }
+        if (StrUtil.equalsIgnoreCase(dbType, DbType.oracle.name())) {
+            if (StrUtil.isBlank(schema)) {
+                AlertUtils.showWarnAlert("Schema不能为空");
+                return;
+            }
+        }
+        if (StrUtil.equalsIgnoreCase(dbType, DbType.postgresql.name())) {
+            if (StrUtil.isBlank(schema)) {
+                schema = "public";
+            }
+        }
+        if (StrUtil.equalsIgnoreCase(dbType, DbType.sqlserver.name())) {
+            if (StrUtil.isBlank(schema)) {
+                schema = "dbo";
+            }
+        }
 
         if (StrUtil.equalsIgnoreCase(dbType, DbType.oracle.name())) {
             if (StrUtil.isNotBlank(database)) {
